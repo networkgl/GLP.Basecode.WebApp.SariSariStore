@@ -75,7 +75,7 @@ async function onScanSuccess(decodedText, decodedResult) {
     scanningPaused = true;
 
     try {
-        const response = await fetch(`https://cafd-143-44-165-100.ngrok-free.app/api/product/getProductByBarcode/${encodeURIComponent(decodedText)}`);
+        const response = await fetch(`https://glp-basecode-api-sarisaristore.onrender.com/api/product/getProductByBarcode/${encodeURIComponent(decodedText)}`);
 
         if (response.ok) {
             stopScanner();

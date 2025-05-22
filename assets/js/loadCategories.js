@@ -1,7 +1,7 @@
 // JavaScript
 async function loadCategories() {
     try {
-        const response = await fetch("https://cafd-143-44-165-100.ngrok-free.app/api/category/getAllCategory");
+        const response = await fetch("https://glp-basecode-api-sarisaristore.onrender.com/api/category/getAllCategory");
         if (!response.ok) throw new Error(`Failed to fetch categories: ${response.status}`);
 
         const result = await response.json();  // check structure

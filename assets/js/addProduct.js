@@ -29,7 +29,7 @@ document.getElementById("product-form").addEventListener("submit", async functio
     btnText.innerHTML = "Loading...";
 
     try {
-        const response = await fetch("https://cafd-143-44-165-100.ngrok-free.app/api/product/addProduct", {
+        const response = await fetch("https://glp-basecode-api-sarisaristore.onrender.com/api/product/addProduct", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
