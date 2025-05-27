@@ -1,13 +1,7 @@
-document.addEventListener("DOMContentLoaded", async function () {
-  try {
-
-     // ✅ Now initialize the DataTable AFTER the data has been inserted
-    const table = new simpleDatatables.DataTable("#export-table", {
-      perPage: 5, // Show 5 entries per page
-      searchable: true,
-      paging: true,
-      perPageSelect: [5, 10, 25, 50],
-      template: (options, dom) => `<div class='${options.classes.top}'>
+// Initialize the DataTable
+const table = new simpleDatatables.DataTable("#export-table", {
+template: (options, dom) => `
+        <div class='${options.classes.top}'>
             <div class='flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-3 rtl:space-x-reverse w-full sm:w-auto'>
                 ${
                     options.paging && options.perPageSelect
@@ -64,47 +58,19 @@ document.addEventListener("DOMContentLoaded", async function () {
                 : ""
             }
             <nav class='${options.classes.pagination}'></nav>
-        </div>`
-    });
+        </div>`,
+});
 
-    // ✅ Initialize export dropdown after table is set up
-    const $exportButton = document.getElementById("exportDropdownButton");
-    const $exportDropdownEl = document.getElementById("exportDropdown");
-    const dropdown = new Dropdown($exportDropdownEl, $exportButton);
+// Initialize the export dropdown
+const $exportButton = document.getElementById("exportDropdownButton");
+const $exportDropdownEl = document.getElementById("exportDropdown");
+const dropdown = new Dropdown($exportDropdownEl, $exportButton);
 
-    document.getElementById("export-csv").addEventListener("click", () => {
-      simpleDatatables.exportCSV(table, {
-        download: true,
-        lineDelimiter: "\n",
-        columnDelimiter: ",",
-      });
-    });
-
-    const response = await fetch("https://glp-basecode-api-sarisaristore.onrender.com/api/product/getAllProduct");
-    if (!response.ok) throw new Error(`Failed to fetch products: ${response.status}`);
-    
-    const result = await response.json();
-    const products = result.data;
-
-    const tbody = document.querySelector("#export-table tbody");
-    tbody.innerHTML = "";
-
-    products.forEach((item) => {
-      const tr = document.createElement("tr");
-      tr.className = "hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer";
-      tr.innerHTML = `
-        <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">${item.productName}</td>
-        <td>${item.categoryName}</td>
-        <td>${item.barcode}</td>
-        <td>${item.price}</td>
-      `;
-      tbody.appendChild(tr);
-    });
-
-   
-
-  } catch (err) {
-    console.error("Error loading products:", err);
-    alert("❌ Failed to load products.\n" + err.message);
-  }
+// Export event listeners
+document.getElementById("export-csv").addEventListener("click", () => {
+simpleDatatables.exportCSV(table, {
+    download: true,
+    lineDelimiter: "\n",
+    columnDelimiter: ",",
+});
 });
