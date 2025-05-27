@@ -155,7 +155,7 @@ async function startScanner() {
             fps: 30,
 qrbox: function(viewfinderWidth, viewfinderHeight) {
     const boxWidth = Math.floor(viewfinderWidth * 0.8); // 80% of width
-    const boxHeight = Math.floor(boxWidth * 0.30); // 4:1 width-to-height ratio
+    const boxHeight = Math.floor(boxWidth * 0.40); // 4:1 width-to-height ratio
     return {
         width: boxWidth,
         height: boxHeight
