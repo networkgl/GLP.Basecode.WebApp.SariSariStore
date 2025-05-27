@@ -169,6 +169,10 @@ async function startScanner() {
         if (shadedRegion) {
             shadedRegion.style.borderColor = "rgba(0, 0, 0, 1)";
         }
+        const video = document.querySelector("video");
+        if (video) {
+            video.style.height = "inherit";
+        }
         }, 100); // 100ms delay usually sufficient
 
         document.getElementById("start-scan-btn").classList.add("hidden");
