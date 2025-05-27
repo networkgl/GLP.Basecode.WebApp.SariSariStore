@@ -153,15 +153,15 @@ async function startScanner() {
         cameraId,
         {
             fps: 30,
-            qrbox: function(viewfinderWidth, viewfinderHeight) {
-            // Calculate a responsive box — e.g., 80% of the smaller dimension
-            const minEdge = Math.min(viewfinderWidth, viewfinderHeight);
-            const boxSize = Math.floor(minEdge * 0.6); // 60% of the smallest edge
-            return {
-                width: boxSize,
-                height: Math.floor(boxSize * 0.75), // Maintain 4:3 ratio
-            };
-            },
+qrbox: function(viewfinderWidth, viewfinderHeight) {
+    const boxWidth = Math.floor(viewfinderWidth * 0.8); // 80% of width
+    const boxHeight = Math.floor(boxWidth * 0.25); // 4:1 width-to-height ratio
+    return {
+        width: boxWidth,
+        height: boxHeight
+    };
+},
+
             aspectRatio: 1.0,
             rememberLastUsedCamera: true,
             experimentalFeatures: {
