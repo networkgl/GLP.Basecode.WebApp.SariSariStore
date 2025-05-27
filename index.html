@@ -18,8 +18,16 @@
 
     <script src="https://unpkg.com/html5-qrcode"></script>
     <style>
-      #qr-shaded-region {
-        border-color: rgba(0, 0, 0, 1);
+      #reader {
+        width: 100%;
+        max-width: 500px;
+        aspect-ratio: 4 / 3;
+        position: relative;
+      }
+      @media (max-width: 768px) {
+        #reader {
+          max-width: 90vw;
+        }
       }
     </style>
   </head>

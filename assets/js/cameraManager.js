@@ -153,7 +153,15 @@ async function startScanner() {
         cameraId,
         {
             fps: 30,
-            qrbox: { width: 200, height: 150 },
+            qrbox: function(viewfinderWidth, viewfinderHeight) {
+            // Calculate a responsive box — e.g., 80% of the smaller dimension
+            const minEdge = Math.min(viewfinderWidth, viewfinderHeight);
+            const boxSize = Math.floor(minEdge * 0.6); // 60% of the smallest edge
+            return {
+                width: boxSize,
+                height: Math.floor(boxSize * 0.75), // Maintain 4:3 ratio
+            };
+            },
             aspectRatio: 1.0,
             rememberLastUsedCamera: true,
             experimentalFeatures: {
@@ -165,14 +173,12 @@ async function startScanner() {
 
         // Wait a bit for DOM to update
         setTimeout(() => {
-        const shadedRegion = document.getElementById("qr-shaded-region");
-        if (shadedRegion) {
-            shadedRegion.style.borderColor = "rgba(0, 0, 0, 1)";
-        }
-        const video = document.querySelector("video");
-        if (video) {
+            const video = document.querySelector("video");
+            if (video) {
+            video.style.width = "100%";
             video.style.height = "inherit";
-        }
+            video.style.objectFit = "cover";
+            }
         }, 100); // 100ms delay usually sufficient
 
         document.getElementById("start-scan-btn").classList.add("hidden");
