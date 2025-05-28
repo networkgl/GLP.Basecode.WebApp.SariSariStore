@@ -26,7 +26,7 @@ document.getElementById("product-form").addEventListener("submit", async functio
 
     submitBtn.disabled = true;
     spinner.classList.remove("hidden");
-    btnText.innerHTML = "Loading...";
+    btnText.innerHTML = "Saving...";
 
     try {
         const response = await fetch("https://glp-basecode-api-sarisaristore.onrender.com/api/product/addProduct", {
