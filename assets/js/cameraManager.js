@@ -18,6 +18,8 @@ const displayProductName = document.getElementById("display-name");
 const displayCategory = document.getElementById("display-category");
 const displayBCode = document.getElementById("display-barcode");
 const displayPrice = document.getElementById("display-price");
+const btnCloseProductDisplay = document.getElementById("btnCloseProductDisplay");
+
 
 function createListItem(code) {
     const li = document.createElement("li");
@@ -125,15 +127,15 @@ async function onScanSuccess(decodedText, decodedResult) {
             displayPrice.innerText = `₱ ${parseFloat(product.price).toFixed(2)}`;
             modalProductDisplay.showModal();
 
+            btnCloseProductDisplay.addEventListener('click', () => {
+                startScanner();
 
-                if (result.isConfirmed) {
-                    startScanner();
+                torchOn = false;
+                currentZoom = 1;
+                zoomInLabel.textContent = `Zoom In: ${currentZoom}x`;
+                zoomOutLabel.textContent = `Zoom Out: ${currentZoom}x`;
+            })
 
-                    torchOn = false;
-                    currentZoom = 1;
-                    zoomInLabel.textContent = `Zoom In: ${currentZoom}x`;
-                    zoomOutLabel.textContent = `Zoom Out: ${currentZoom}x`;
-                }
 
 
             scanningPaused = false;
