@@ -41,7 +41,7 @@ $(document).ready(async function () {
                     alert("Update failed: " + error.message);
                     return;
                 }
-                alert("Product updated successfully!");
+                alert("Product deleted successfully!");
 
                 table.row(row).remove().draw(false);
 

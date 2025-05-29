@@ -94,33 +94,7 @@ async function onScanSuccess(decodedText, decodedResult) {
             const product = result.data;
 
             playBeepFound();
-
-            // await Swal.fire({
-            //     icon: 'info',
-            //     title: 'Product Found',
-            //     html: `
-            //     <div class="text-left space-y-1 text-sm">
-            //         <p><strong>Category:</strong> <span class="text-gray-700">${product.categoryName}</span></p>
-            //         <p><strong>Barcode:</strong> <span class="bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded font-semibold">${product.barcode}</span></p>
-            //         <p><strong>Product Name:</strong> <span class="text-gray-800">${product.productName}</span></p>
-            //         <p><strong>Price:</strong> <span class="text-green-600 font-bold">₱ ${parseFloat(product.price).toFixed(2)}</span></p>
-            //     </div>
-            //   `,
-            //     confirmButtonText: 'OK'
-            // }).then((result) => {
-
-
-            //     /* Read more about isConfirmed, isDenied below */
-            //     if (result.isConfirmed) {
-            //         startScanner();
-
-            //         torchOn = false;
-            //         currentZoom = 1;
-            //         zoomInLabel.textContent = `Zoom In: ${currentZoom}x`;
-            //         zoomOutLabel.textContent = `Zoom Out: ${currentZoom}x`;
-            //     }
-            // });
-
+        
             displayProductName.innerText = product.productName;
             displayBCode.innerText = product.barcode;
             displayCategory.innerText = product.categoryName;

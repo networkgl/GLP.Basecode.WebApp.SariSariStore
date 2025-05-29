@@ -1,3 +1,5 @@
+let table, row;
+
 $(document).ready(async function () {
     
     //Pass val to modal inputs
@@ -14,9 +16,13 @@ $(document).ready(async function () {
 
         // Show the modal
         my_modal_3.showModal();
+
+        //remove manually once success for live update
+         table = $('#product-table').DataTable();
+         row = $(this).closest('tr');
     });
 
-    $("#update-form").on("submit", async function (e) {
+    $("#update-form").off().on("submit", async function (e) {
         e.preventDefault();
 
         if($("#update-price").val() == 0 || $("#update-price").val() === null){
@@ -61,16 +67,7 @@ $(document).ready(async function () {
             }
             alert("Product updated successfully!");
 
-
-            const table = $('#product-table').DataTable();
-
-            table.rows().every(function () {
-                const rowData = this.data();
-                if (rowData[2] === data.barcode) { //index 2 for barcode
-                    this.remove();
-                }
-            });
-
+            table.row(row).remove().draw(false);
 
             // Add the updated row
             table.row.add([
@@ -92,7 +89,8 @@ $(document).ready(async function () {
                         
                         <button
                             class="m-1 btn btn-sm btn-error delete-btn"
-                            data-id="${data.productId}"
+                            data-id="${id}"
+                            data-barcode="${data.barcode}"
                             >
                             Delete
                         </button>
