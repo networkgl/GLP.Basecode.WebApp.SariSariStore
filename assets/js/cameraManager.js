@@ -119,9 +119,9 @@ async function onScanSuccess(decodedText, decodedResult) {
             //     }
             // });
 
-            displayProductName.innerText = product.categoryName;
+            displayProductName.innerText = product.productName;
             displayBCode.innerText = product.barcode;
-            displayCategory.innerText = product.productName;
+            displayCategory.innerText = product.categoryName;
             displayPrice.innerText = `₱ ${parseFloat(product.price).toFixed(2)}`;
             modalProductDisplay.showModal();
 
