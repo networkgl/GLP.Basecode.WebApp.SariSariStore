@@ -71,7 +71,7 @@
                 />
               </svg>
             </label>
-            <a class="btn btn-ghost text-xl normal-case">Maribeth Store</a>
+            <a href="./index.html" class="btn btn-ghost text-xl normal-case">Store Name</a>
           </div>
 
           <div class="navbar-end">
@@ -134,24 +134,25 @@
             <!-- Banner Header -->
             <div class="text-center">
               <img
-                src="/assets/images/maribeth_store.jpg"
+                src="/assets/images/logio1.png"
                 alt="Store Logo"
-                class="mx-auto h-16 mb-2"
+                class="mx-auto rounded-lg h-40 w-full mb-4"
               />
-              <h2 class="text-lg font-semibold text-base-content">
-                Maribeth Sari-Sari Store
-              </h2>
-              <p class="text-md text-base-content/60">
-                Developed by Gian Lloyd Pinote
-              </p>
-            </div>
-
-            <!-- Title -->
+              <!-- <h2 class="text-lg font-semibold text-base-content">
+                 Sari-Sari Store
+              </h2> -->
+                   <!-- Title -->
             <h1
-              class="text-2xl text-[#0967C2] font-bold text-center text-primary"
+              class="text-4xl text-[#0967C2] font-bold text-center text-primary"
             >
               📦 Price Checker
             </h1>
+          
+            </div>
+
+           <p class="text-center text-md text-base-content/60">
+                Developed by Gian Lloyd Pinote
+              </p>
 
             <!-- Buttons -->
             <div class="flex space-x-2">
@@ -282,18 +283,6 @@
     <script type="module" src="/assets/js/cameraManager.js"></script>
     <script type="module" src="/assets/js/addProduct.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-      document.querySelectorAll(".theme-toggle").forEach((toggleBtn) => {
-        toggleBtn.addEventListener("click", () => {
-          const darkIcon = toggleBtn.querySelector(".theme-toggle-dark-icon");
-          const lightIcon = toggleBtn.querySelector(".theme-toggle-light-icon");
-
-          if (darkIcon && lightIcon) {
-            darkIcon.classList.toggle("hidden");
-            lightIcon.classList.toggle("hidden");
-          }
-        });
-      });
-    </script>
+    <script src="./assets/js/handleTheme.js"></script>
   </body>
 </html>

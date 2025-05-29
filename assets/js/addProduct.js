@@ -30,19 +30,19 @@ document.getElementById("product-form").addEventListener("submit", async functio
 
     try {
         const response = await fetch("https://glp-basecode-api-sarisaristore.onrender.com/api/product/addProduct", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(productData)
-    });
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(productData)
+        });
 
     // Check if request failed
     if (!response.ok) {
       const errorMessage = await response.text(); // get error message from API if any
-      throw new Error(`Server error: ${response.status} - ${errorMessage}`);
       await stopScanner();
       await startScanner(); // restart after add
+      throw new Error(`Server error: ${response.status} - ${errorMessage}`);
     }
 
     // Parse JSON response
