@@ -194,7 +194,7 @@
               </h3>
               <ul
                 id="scanned-list"
-                class="list-disc pl-6 text-base-content/90 space-y-3 max-h-60 overflow-y-auto bg-base-100 dark:bg-base-300 p-4 rounded-lg shadow"
+                class="list-disc pl-6 text-base-content/90 space-y-3 max-h-60 overflow-y-auto bg-base-100 dark:bg-base-300 p-4 rounded-lg shadow h-30"
               ></ul>
             </div>
           </div>
@@ -278,6 +278,59 @@
       id="sidebar-overlay"
       class="fixed inset-0 bg-black bg-opacity-30 z-40 hidden"
     ></div>
+
+  <!-- <button class="btn" onclick="display_product_modal.showModal()">open modal</button> -->
+
+  <dialog id="display_product_modal" class="modal">
+    <div class="modal-box">
+      <button
+        type="button"
+        class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+        onclick="display_product_modal.close()"
+      >
+        ✕
+      </button>
+      <h3 class="font-bold text-lg mb-8">Product Found</h3>
+
+      <div class="mb-4">
+        <span class="label-text text-sm font-medium">Product Name</span>
+        <label
+          id="display-name"
+          class="block w-full bg-base-200 text-base-content rounded px-3 py-2 mt-1"
+        >asdasd</label>
+      </div>
+
+      <div class="mb-4">
+        <span class="label-text text-sm font-medium">Category</span>
+        <label
+          id="display-category"
+          class="block w-full bg-base-200 text-base-content rounded px-3 py-2 mt-1"
+        >asdas</label>
+      </div>
+
+      <div class="mb-4">
+        <span class="label-text text-sm font-medium">Barcode</span>
+        <label
+          id="display-barcode"
+          class="block w-full bg-base-200 text-yellow-600 font-semibold rounded px-3 py-2 mt-1"
+        >
+          123456
+        </label>
+      </div>
+
+      <div>
+        <span class="label-text text-sm font-medium">Price</span>
+        <label
+          id="display-price"
+          class="block w-full bg-base-200 text-green-600 font-bold rounded px-3 py-2 mt-1"
+        >
+          $100
+        </label>
+      </div>
+    </div>
+  </dialog>
+
+
 
     <script type="module" src="/assets/js/loadCategories.js"></script>
     <script type="module" src="/assets/js/cameraManager.js"></script>

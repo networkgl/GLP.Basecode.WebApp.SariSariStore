@@ -12,6 +12,13 @@ const zoomInLabel = document.getElementById("zoom-in-level");
 const zoomOutLabel = document.getElementById("zoom-out-level");
 
 
+//modal display
+const modalProductDisplay = document.getElementById("display_product_modal");
+const displayProductName = document.getElementById("display-name");
+const displayCategory = document.getElementById("display-category");
+const displayBCode = document.getElementById("display-barcode");
+const displayPrice = document.getElementById("display-price");
+
 function createListItem(code) {
     const li = document.createElement("li");
     li.className = "flex justify-between items-center";
@@ -86,22 +93,39 @@ async function onScanSuccess(decodedText, decodedResult) {
 
             playBeepFound();
 
-            await Swal.fire({
-                icon: 'info',
-                title: 'Product Found',
-                html: `
-                <div class="text-left space-y-1 text-sm">
-                    <p><strong>Category:</strong> <span class="text-gray-700">${product.categoryName}</span></p>
-                    <p><strong>Barcode:</strong> <span class="bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded font-semibold">${product.barcode}</span></p>
-                    <p><strong>Product Name:</strong> <span class="text-gray-800">${product.productName}</span></p>
-                    <p><strong>Price:</strong> <span class="text-green-600 font-bold">₱ ${parseFloat(product.price).toFixed(2)}</span></p>
-                </div>
-              `,
-                confirmButtonText: 'OK'
-            }).then((result) => {
+            // await Swal.fire({
+            //     icon: 'info',
+            //     title: 'Product Found',
+            //     html: `
+            //     <div class="text-left space-y-1 text-sm">
+            //         <p><strong>Category:</strong> <span class="text-gray-700">${product.categoryName}</span></p>
+            //         <p><strong>Barcode:</strong> <span class="bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded font-semibold">${product.barcode}</span></p>
+            //         <p><strong>Product Name:</strong> <span class="text-gray-800">${product.productName}</span></p>
+            //         <p><strong>Price:</strong> <span class="text-green-600 font-bold">₱ ${parseFloat(product.price).toFixed(2)}</span></p>
+            //     </div>
+            //   `,
+            //     confirmButtonText: 'OK'
+            // }).then((result) => {
 
 
-                /* Read more about isConfirmed, isDenied below */
+            //     /* Read more about isConfirmed, isDenied below */
+            //     if (result.isConfirmed) {
+            //         startScanner();
+
+            //         torchOn = false;
+            //         currentZoom = 1;
+            //         zoomInLabel.textContent = `Zoom In: ${currentZoom}x`;
+            //         zoomOutLabel.textContent = `Zoom Out: ${currentZoom}x`;
+            //     }
+            // });
+
+            displayProductName.innerText = product.categoryName;
+            displayBCode.innerText = product.barcode;
+            displayCategory.innerText = product.productName;
+            displayPrice.innerText = `₱ ${parseFloat(product.price).toFixed(2)}`;
+            modalProductDisplay.showModal();
+
+
                 if (result.isConfirmed) {
                     startScanner();
 
@@ -110,7 +134,7 @@ async function onScanSuccess(decodedText, decodedResult) {
                     zoomInLabel.textContent = `Zoom In: ${currentZoom}x`;
                     zoomOutLabel.textContent = `Zoom Out: ${currentZoom}x`;
                 }
-            });
+
 
             scanningPaused = false;
             return; // 🔴 Don't proceed to add it to the list
