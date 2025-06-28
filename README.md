@@ -38,8 +38,8 @@ All product data operations are handled through an **external REST API**.
 
 - **HTML5**, **CSS**, **JavaScript**
 - **Tailwind CSS** with **DaisyUI** components
-- **Barcode Scanning Library** (e.g., QuaggaJS / ZXing)
-- **Fetch API / jQuery** for AJAX requests
+- **Barcode Scanning Library** (html5qr)
+- **Fetch API** for AJAX requests
 - **RESTful API** backend (not included in this repo)
 
 ---
