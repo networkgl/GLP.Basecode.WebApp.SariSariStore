@@ -9,11 +9,10 @@ document.getElementById("product-form").addEventListener("submit", async functio
     Barcode: document.getElementById("sidebar-barcode").value.trim(),
     ProductName: document.getElementById("sidebar-name").value.trim(),
     Price: parseFloat(document.getElementById("sidebar-price").value),
-    CategoryId: parseInt(document.getElementById("sidebar-category").value) // Must be a number
+    CategoryId: parseInt(document.getElementById("sidebar-category").value) 
   };
 
 
-  // Basic validation (optional)
   if (!productData.Barcode || !productData.ProductName || isNaN(productData.Price) || isNaN(productData.CategoryId)) {
     alert("Please fill in all fields correctly.");
 
@@ -39,9 +38,9 @@ document.getElementById("product-form").addEventListener("submit", async functio
 
     // Check if request failed
     if (!response.ok) {
-      const errorMessage = await response.text(); // get error message from API if any
+      const errorMessage = await response.text(); 
       await stopScanner();
-      await startScanner(); // restart after add
+      await startScanner(); 
       throw new Error(`Server error: ${response.status} - ${errorMessage}`);
     }
 
@@ -51,21 +50,21 @@ document.getElementById("product-form").addEventListener("submit", async functio
 
   
 
-    alert("✅ Product saved successfully!");
+    alert("Product saved successfully!");
 
 
-    // Optional: Clear form & close sidebar
+    // Clear form & close sidebar
     e.target.reset();
     closeSidebar();
 
-    setZoom(1); // ✅ reset the zoom safely
+    setZoom(1); //reset the zoom safely
 
 
 
     // ✅ Remove the list item from the scanned list
     if (currentListItem) {
-        currentListItem.remove();    // correct way to remove list item
-        scanned.delete(currentScannedCode); // Clean from Set if using one
+        currentListItem.remove();    
+        scanned.delete(currentScannedCode);
     }
 
 

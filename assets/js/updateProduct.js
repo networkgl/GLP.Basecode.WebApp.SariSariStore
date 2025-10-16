@@ -2,7 +2,6 @@ let table, row;
 
 $(document).ready(async function () {
     
-    //Pass val to modal inputs
     $("#product-table tbody").on("click", ".update-btn", function () {
         const btn = $(this);
 
@@ -14,7 +13,6 @@ $(document).ready(async function () {
         $("#update-barcode").val(btn.data("barcode"));
         $("#update-price").val(btn.data("price"));
 
-        // Show the modal
         my_modal_3.showModal();
 
         //remove manually once success for live update

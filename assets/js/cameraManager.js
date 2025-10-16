@@ -113,10 +113,9 @@ async function onScanSuccess(decodedText, decodedResult) {
 
 
             scanningPaused = false;
-            return; // 🔴 Don't proceed to add it to the list
+            return; 
         }
         else {
-            // If it reaches here, it means product was NOT found
             scanned.set(decodedText, true);
             playBeep();
 
@@ -124,12 +123,10 @@ async function onScanSuccess(decodedText, decodedResult) {
             scannedList.insertBefore(li, scannedList.firstChild);
         }
 
-        // If not found, that means new product (shouldn't happen because 404 will be thrown)
     } catch (error) {
         console.error("Fetch failed:", error);
 
     } finally {
-        // Ensure scanner resumes even if something goes wrong
         setTimeout(() => {
             scanningPaused = false;
         }, 1000);
@@ -171,7 +168,6 @@ async function startScanner() {
         onScanSuccess
         );
 
-        // Wait a bit for DOM to update
         setTimeout(() => {
             const video = document.querySelector("video");
             if (video) {
@@ -179,7 +175,7 @@ async function startScanner() {
             video.style.height = "inherit";
             video.style.objectFit = "cover";
             }
-        }, 100); // 100ms delay usually sufficient
+        }, 100); // 100ms delay 
 
         document.getElementById("start-scan-btn").classList.add("hidden");
 
@@ -235,19 +231,19 @@ async function applyZoom(newZoom) {
     }
 }
 
-// 🔍 Zoom In handling
+// Zoom In handling
 document.getElementById("zoom-in-btn").addEventListener("click", () => {
     const newZoom = currentZoom + 1;
     applyZoom(newZoom);
 });
 
-// 🔍 Zoom Out handling
+// Zoom Out handling
 document.getElementById("zoom-out-btn").addEventListener("click", () => {
     const newZoom = currentZoom - 1;
     applyZoom(newZoom);
 });
 
-// 🔦 Flashlight toggle
+// Flashlight toggle
 document
     .getElementById("toggle-torch-btn")
     .addEventListener("click", async () => {
@@ -298,7 +294,6 @@ function closeSidebar() {
 
 }
 
-// Clicking outside closes the sidebar
 overlay.addEventListener("click", closeSidebar);
 
 function setZoom(value) {

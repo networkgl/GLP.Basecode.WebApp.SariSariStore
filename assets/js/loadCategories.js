@@ -4,10 +4,10 @@ async function loadCategories() {
         const response = await fetch("https://glp-basecode-api-sarisaristore.onrender.com/api/category/getAllCategory");
         if (!response.ok) throw new Error(`Failed to fetch categories: ${response.status}`);
 
-        const result = await response.json();  // check structure
+        const result = await response.json();  
         console.log("Categories response:", result);
 
-        const categories = result.data; // update based on actual structure
+        const categories = result.data; 
 
         if (!Array.isArray(categories)) {
             throw new Error("Expected 'data' to be an array.");
@@ -27,7 +27,7 @@ async function loadCategories() {
 
     } catch (err) {
         console.error("Error loading categories:", err);
-        alert("❌ Failed to load categories.\n" + err.message);
+        alert("Failed to load categories.\n" + err.message);
     }
 }
 
