@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", async function () {
   try {
 
-     // ✅ Now initialize the DataTable AFTER the data has been inserted
     const table = new simpleDatatables.DataTable("#export-table", {
       perPage: 5, // Show 5 entries per page
       searchable: true,
@@ -67,7 +66,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         </div>`
     });
 
-    // ✅ Initialize export dropdown after table is set up
+    //  export dropdown after table is set up
     const $exportButton = document.getElementById("exportDropdownButton");
     const $exportDropdownEl = document.getElementById("exportDropdown");
     const dropdown = new Dropdown($exportDropdownEl, $exportButton);
