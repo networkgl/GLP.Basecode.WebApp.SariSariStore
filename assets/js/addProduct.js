@@ -60,8 +60,7 @@ document.getElementById("product-form").addEventListener("submit", async functio
     setZoom(1); //reset the zoom safely
 
 
-
-    // ✅ Remove the list item from the scanned list
+    // Remove the list item from the scanned list
     if (currentListItem) {
         currentListItem.remove();    
         scanned.delete(currentScannedCode);
@@ -70,7 +69,7 @@ document.getElementById("product-form").addEventListener("submit", async functio
 
   } catch (err) {
     console.error("Failed to save product:", err);
-    alert(`❌ Failed to save product. Please try again.\n\nDetails: ${err.message}`);
+    alert(`Failed to save product. Please try again.\n\nDetails: ${err.message}`);
     await stopScanner();
     await startScanner(); // restart after add
    } finally {
